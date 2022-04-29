@@ -225,12 +225,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Simple Link
-                                    <span class="right badge badge-danger">New</span>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Logout</button>
+                                    </form>
                                 </p>
                             </a>
                         </li>
