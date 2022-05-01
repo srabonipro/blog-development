@@ -57,9 +57,13 @@
                                             <td>{{ $category->slug }}</td>
                                             <td>{{ $category->description }}</td>
                                             <td>10</td>
-                                            <td>
-                                                <a href="{{ route('categories.edit', $category->id) }}" title="Edit"><i class="fas fa-edit"></i></a>
-                                                <a href="" title="Delete"><i class="fas fa-trash"></i></a>
+                                            <td class="d-flex justify-content-between align-items-center">
+                                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @empty
