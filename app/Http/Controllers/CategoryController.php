@@ -47,6 +47,8 @@ class CategoryController extends Controller
             "slug" => Str::slug($request->name),
             "description" => $request->description
         ]);
+
+        toast('Category Added Successfully!','success');
         return back();
     }
 
@@ -91,6 +93,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->save();
 
+        toast('Category Updated Successfully!','success');
         return to_route('categories.index');
     }
 
@@ -103,6 +106,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+
+        toast('Category Deleted Successfully!','success');
         return back();
     }
 }

@@ -304,6 +304,8 @@
     </div>
     <!-- ./wrapper -->
 
+    @include('sweetalert::alert')
+
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
