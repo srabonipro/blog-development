@@ -9,8 +9,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Category</a></li>
-                            <li class="breadcrumb-item active">Create</li>
+                            <a href="{{ route('categories.create') }}" class="btn btn-primary">Add New Category</a>
+                            {{-- <li class="breadcrumb-item"><a href="#">Category</a></li>
+                            <li class="breadcrumb-item active">Create</li> --}}
                         </ol>
                     </div>
                 </div>

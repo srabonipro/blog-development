@@ -27,21 +27,31 @@
                                 <h3 class="card-title">Create Category</h3>
                             </div>
 
-                            <form>
+                            <form action="{{ route('categories.store') }}" method="POST">
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="category">Category Name</label>
-                                        <input type="text" class="form-control" id="category"
+                                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="category"
                                             placeholder="Enter category">
+                                            @error('name')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Category Description</label>
-                                        <textarea id="description" class="form-control" rows="5" placeholder="Enter category description"></textarea>
+                                        <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="5" placeholder="Enter category description">{{ old('description') }}</textarea>
+                                        @error('description')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-primary">Add</button>
+                                        <a href="{{ route('categories.index') }}" class="btn btn-primary">Back</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
