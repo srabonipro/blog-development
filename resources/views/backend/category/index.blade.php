@@ -45,21 +45,31 @@
                                             <th>Category</th>
                                             <th>Slug</th>
                                             <th>Description</th>
+                                            <th>Posts</th>
                                             <th style="width: 40px">Actions</th>
-                                            {{-- <th style="width: 40px">Label</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @forelse ($categories as $category)
                                         <tr>
-                                            <td>1.</td>
-                                            <td>Update software</td>
-                                            <td>update-software</td>
-                                            <td>Update software Update software Update software</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $category->name }}</td>
+                                            <td>{{ $category->slug }}</td>
+                                            <td>{{ $category->description }}</td>
+                                            <td>10</td>
                                             <td>
                                                 <a href=""><i class="fas fa-edit"></i></a>
                                                 <a href=""><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="6">
+                                                <p class="text-danger" style="text-align: center; margin: 10px 0;">Nothing found</p>
+                                            </td>
+                                        </tr>
+                                        @endforelse
+
                                     </tbody>
                                 </table>
                             </div>
