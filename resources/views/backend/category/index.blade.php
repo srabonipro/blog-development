@@ -58,8 +58,8 @@
                                             <td>{{ $category->description }}</td>
                                             <td>10</td>
                                             <td>
-                                                <a href=""><i class="fas fa-edit"></i></a>
-                                                <a href=""><i class="fas fa-trash"></i></a>
+                                                <a href="{{ route('categories.edit', $category->id) }}" title="Edit"><i class="fas fa-edit"></i></a>
+                                                <a href="" title="Delete"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         @empty

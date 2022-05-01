@@ -37,7 +37,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             "name" => "required|max:30|unique:categories,name",
             "description" => "max:1000"
         ]);
@@ -69,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.category.edit');
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -81,7 +81,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            "name" => "required|max:30|unique:categories,name",
+            "description" => "max:1000"
+        ]);
+
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->description = $request->description;
+        $category->save();
+
+        return to_route('categories.index');
     }
 
     /**
