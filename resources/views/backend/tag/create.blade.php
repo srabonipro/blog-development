@@ -22,7 +22,26 @@
                             </div>
 
                             <div class="card-body">
-                                Tag Create
+                                <form action="{{ route('tags.store') }}" method="POST">
+                                    @csrf
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="tag">Tag Name</label>
+                                            <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="tag"
+                                                placeholder="Enter tag">
+                                                @error('name')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="d-flex justify-content-between">
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                            <a href="{{ route('tags.index') }}" class="btn btn-primary">Back</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 

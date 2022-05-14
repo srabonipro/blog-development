@@ -7,6 +7,11 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Tag</h1>
                     </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <a href="{{ route('tags.create') }}" class="btn btn-primary">Add New Tag</a>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
