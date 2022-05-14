@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -34,7 +36,17 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required|max:30|unique:categories,name",
+        ]);
+
+        Tag::create([
+            "name" => $request->name,
+            "slug" => Str::slug($request->name)
+        ]);
+
+        toast('Tag Added Successfully!', 'success');
+        return back();
     }
 
     /**
