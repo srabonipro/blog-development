@@ -38,7 +38,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|max:30|unique:categories,name",
+            "name" => "required|max:30|unique:tags,name",
         ]);
 
         Tag::create([
@@ -67,9 +67,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        return view('backend.tag.edit');
+        return view('backend.tag.edit', compact('tag'));
     }
 
     /**
@@ -79,9 +79,18 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate([
+            "name" => "required|max:30|unique:tags,name"
+        ]);
+
+        $tag->name = $request->name;
+        $tag->slug = Str::slug($request->name);
+        $tag->save();
+
+        toast('Tag Updated Successfully!', 'success');
+        return to_route('tags.index');
     }
 
     /**

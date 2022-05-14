@@ -22,7 +22,27 @@
                             </div>
 
                             <div class="card-body">
-                                Tag Edit
+                                <form action="{{ route('tags.update', $tag->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="tag">Tag Name</label>
+                                            <input value="{{ $tag->name }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="tag" placeholder="Enter tag">
+                                            @error('name')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="d-flex justify-content-between">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <a href="{{ route('tags.index') }}" class="btn btn-primary">Cancel</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
