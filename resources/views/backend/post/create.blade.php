@@ -32,8 +32,9 @@
                                                 @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="category">Category</label>
+                                            <label for="category">Post Category</label>
                                             <select name="category" id="category" class="form-control">
+                                                <option value="" class="d-none">Select Category</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach

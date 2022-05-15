@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -38,7 +39,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|unique:posts,title',
+            'image' => 'required|image',
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
+        Post::create([
+            'title'         => $request->title,
+            'slug'          => Str::slug($request->title),
+            'image'         => 'image.jpg',
+            'description'   => $request->description,
+            'category_id'   => $request->category,
+            'user_id'       => auth()->id(),
+            'published_at'  => now()
+        ]);
+
+        toast('Post Added Successfully!', 'success');
+        return back();
     }
 
     /**
