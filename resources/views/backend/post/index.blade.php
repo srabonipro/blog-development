@@ -46,7 +46,6 @@
                                             <td>{{ $post->title }}</td>
                                             <td>{{ $post->category_id }}</td>
                                             <td>{{ $post->user_id }}</td>
-                                            <td>10</td>
                                             <td class="d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">

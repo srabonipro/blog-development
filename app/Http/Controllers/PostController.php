@@ -46,15 +46,22 @@ class PostController extends Controller
             'category' => 'required'
         ]);
 
-        Post::create([
+        $post = Post::create([
             'title'         => $request->title,
             'slug'          => Str::slug($request->title),
-            'image'         => 'image.jpg',
             'description'   => $request->description,
             'category_id'   => $request->category,
             'user_id'       => auth()->id(),
             'published_at'  => now()
         ]);
+
+        if ($request->image) {
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/post/', $image_new_name);
+            $post->image = '/storage/post/' . $image_new_name;
+            $post->save();
+        }
 
         toast('Post Added Successfully!', 'success');
         return back();

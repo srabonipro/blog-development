@@ -21,7 +21,7 @@
                                 <h3 class="card-title">Create Post</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('posts.store') }}" method="POST">
+                                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
