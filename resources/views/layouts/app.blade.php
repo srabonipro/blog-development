@@ -362,7 +362,14 @@
     <!-- Bootstrap 4 -->
     <script src="{{ asset('backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
+    <script src="{{ asset('backend') }}/js/bs-custom-file-input.min.js"></script>
     <script src="{{ asset('backend') }}/js/adminlte.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        })
+    </script>
 </body>
 
 </html>
