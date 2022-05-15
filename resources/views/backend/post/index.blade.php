@@ -23,11 +23,52 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body p-0">
-                                Post Index
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Author</th>
+                                            <th style="width: 40px">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($posts as $post)
+                                        <tr>
+                                            <td>{{ $post->id }}</td>
+                                            <td>
+                                                <div style="max-width:70px; max-height:70px; overflow:hidden;">
+                                                    <img src="{{ asset($post->image) }}" class="img-fluid" alt="">
+                                                </div>
+                                            </td>
+                                            <td>{{ $post->title }}</td>
+                                            <td>{{ $post->category_id }}</td>
+                                            <td>{{ $post->user_id }}</td>
+                                            <td>10</td>
+                                            <td class="d-flex justify-content-between align-items-center">
+                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="6">
+                                                <p class="text-danger" style="text-align: center; margin: 10px 0;">Nothing found</p>
+                                            </td>
+                                        </tr>
+                                        @endforelse
+
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
