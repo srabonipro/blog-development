@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(20);
+        $posts = Post::with('category', 'user')->paginate(20);
         return view('backend.post.index', compact('posts'));
     }
 
