@@ -53,6 +53,7 @@
                                             </td>
                                             <td>{{ $post->user->name }}</td>
                                             <td class="d-flex justify-content-between align-items-center">
+                                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-warning mr-2" title="Show"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                                     @csrf
