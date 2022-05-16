@@ -136,6 +136,14 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // Remove image
+        if (file_exists(public_path($post->image))) {
+            unlink(public_path($post->image));
+        }
+
+        $post->delete();
+
+        toast('Post Deleted Successfully!', 'success');
+        return back();
     }
 }
