@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('backend.post.create', compact('categories'));
+        $tags = Tag::all();
+        return view('backend.post.create', compact('categories', 'tags'));
     }
 
     /**
@@ -61,6 +63,10 @@ class PostController extends Controller
             $post->image = '/storage/post/' . $image_new_name;
             $post->save();
         }
+
+
+
+        $post->tags()->attach($request->tags);
 
         toast('Post Added Successfully!', 'success');
         return back();
