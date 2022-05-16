@@ -91,8 +91,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        // return $post::with('tags:id')->get();
         $categories = Category::all();
-        return view('backend.post.edit', compact('categories', 'post'));
+        $tags = Tag::all();
+        return view('backend.post.edit', compact('categories', 'post', 'tags'));
     }
 
     /**
@@ -129,6 +131,8 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->category_id = $request->category;
         $post->update();
+
+        $post->tags()->sync($request->tags);
 
         toast('Post Updated Successfully!', 'success');
         return back();

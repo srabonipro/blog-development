@@ -47,6 +47,20 @@
                                                 @enderror
                                         </div>
 
+                                        <div class="form-group">
+                                            <label>Select Tags</label>
+                                            @foreach ($tags as $tag)
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}"
+                                                        @foreach ($post->tags as $t)
+                                                            @if ($tag->id == $t->id) checked @endif
+                                                        @endforeach
+                                                    >
+                                                    <label for="tag{{ $tag->id }}" class="form-check-label">{{ $tag->name }}</label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
                                         <input type="hidden" name="old_image" value="{{ $post->image }}">
                                         <div class="form-group">
                                             <div class="row">
@@ -78,7 +92,7 @@
 
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-between">
-                                            <button type="submit" class="btn btn-primary">Add</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                             <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
                                         </div>
                                     </div>
