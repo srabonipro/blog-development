@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend') }}/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/css/summernote-bs4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -365,10 +366,16 @@
     <script src="{{ asset('backend') }}/js/bs-custom-file-input.min.js"></script>
     <script src="{{ asset('backend') }}/js/adminlte.min.js"></script>
 
+    <script src="{{ asset('backend') }}/js/summernote-bs4.min.js"></script>
     <script>
         $(document).ready(function () {
             bsCustomFileInput.init()
         })
+        $('#description').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 300
+        });
     </script>
 </body>
 
