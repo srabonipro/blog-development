@@ -48,10 +48,19 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="image">Image</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="image" name="image">
-                                                <label class="custom-file-label" for="image">Choose Image</label>
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <label for="image">Image</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="image" name="image">
+                                                        <label class="custom-file-label" for="image">Choose Image</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 text-right">
+                                                    <div style="max-width:100px; max-height:100px; overflow:hidden; margin-left:auto;">
+                                                        <img src="{{ asset($post->image) }}" class="img-fluid" alt="">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
