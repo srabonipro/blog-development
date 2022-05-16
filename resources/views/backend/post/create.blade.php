@@ -44,10 +44,10 @@
                                                 @enderror
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Select Tags</label>
+                                        <label>Select Tags</label>
+                                        <div class="form-group d-flex">
                                             @foreach ($tags as $tag)
-                                            <div class="form-check">
+                                            <div class="form-check mr-3">
                                                 <input class="form-check-input" type="checkbox" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
                                                 <label for="tag{{ $tag->id }}" class="form-check-label">{{ $tag->name }}</label>
                                             </div>
