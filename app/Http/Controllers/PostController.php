@@ -41,7 +41,6 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|unique:posts,title',
-            'image' => 'required|image',
             'description' => 'required',
             'category' => 'required'
         ]);
@@ -99,7 +98,34 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => "required|unique:posts,title,{$post->id}",
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
+        if ($request->image) {
+            // Remove old image
+            if (file_exists(public_path($request->old_image))) {
+                unlink(public_path($request->old_image));
+            }
+
+            // Save new image
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/post/', $image_new_name);
+            $post->image = '/storage/post/' . $image_new_name;
+            $post->save();
+        }
+
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title);
+        $post->description = $request->description;
+        $post->category_id = $request->category;
+        $post->update();
+
+        toast('Post Updated Successfully!', 'success');
+        return back();
     }
 
     /**

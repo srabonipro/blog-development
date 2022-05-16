@@ -47,6 +47,7 @@
                                                 @enderror
                                         </div>
 
+                                        <input type="hidden" name="old_image" value="{{ $post->image }}">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-8">
