@@ -107,9 +107,11 @@
                         <div class="pt-5">
                             <p>
                                 Category: <a href="#">{{ $post->category->name }}</a>
-                                Tags:   @foreach ($post->tags as $tag)
-                                            <a href="#">#{{ $tag->name }}</a>,
-                                        @endforeach
+                                @if ($post->tags->count())
+                                    Tags:   @foreach ($post->tags as $tag)
+                                                <a href="#">#{{ $tag->name }}</a>,
+                                            @endforeach
+                                @endif
                             </p>
                         </div>
 
