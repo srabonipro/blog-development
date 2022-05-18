@@ -14,4 +14,9 @@ class FrontendController extends Controller
 
         return view('frontend.index', compact('posts', 'recentPosts'));
     }
+
+    public function post(Post $post)
+    {
+        return view('frontend.post', compact('post'));
+    }
 }

@@ -13,6 +13,7 @@ Route::get('/', function () {
 
 // Frontend Routes
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
+Route::get('/{post:slug}', [FrontendController::class, 'post'])->name('frontend.post');
 
 
 // Frontend Routes
