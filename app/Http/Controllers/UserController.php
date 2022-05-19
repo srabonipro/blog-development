@@ -74,7 +74,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('backend.user.show');
+        //
     }
 
     /**
@@ -148,5 +148,17 @@ class UserController extends Controller
 
         toast('User Deleted Successfully!', 'success');
         return back();
+    }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('backend.user.profile', compact('user'));
+    }
+
+    public function profileSetting()
+    {
+        $user = auth()->user();
+        return view('backend.user.setting', compact('user'));
     }
 }

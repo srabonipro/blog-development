@@ -30,4 +30,8 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/users', UserController::class);
+
+    // Admin Profile
+    Route::get('/profile', [UserController::class, 'profile'])->name('admin.profile');
+    Route::get('/profile-setting', [UserController::class, 'profileSetting'])->name('admin.profile.setting');
 });
