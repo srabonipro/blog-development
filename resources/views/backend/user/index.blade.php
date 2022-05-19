@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('posts.create') }}" class="btn btn-primary">Add New User</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary">Add New User</a>
                         </ol>
                     </div>
                 </div>
@@ -23,39 +23,33 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body p-0">
-                                {{-- <table class="table">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th style="width: 10px">#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Username</th>
                                             <th>Image</th>
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Tags</th>
-                                            <th>Author</th>
                                             <th style="width: 40px">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($posts as $post)
+                                        @forelse ($users as $user)
                                         <tr>
-                                            <td>{{ $post->id }}</td>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->username }}</td>
                                             <td>
                                                 <div style="max-width:70px; max-height:70px; overflow:hidden;">
-                                                    <img src="{{ asset($post->image) }}" class="img-fluid" alt="">
+                                                    <img src="{{ asset($user->image) }}" class="img-fluid" alt="">
                                                 </div>
                                             </td>
-                                            <td>{{ $post->title }}</td>
-                                            <td>{{ $post->category->name }}</td>
-                                            <td>
-                                                @foreach ($post->tags as $tag)
-                                                    <span class="badge badge-primary">{{ $tag->name }}</span>
-                                                @endforeach
-                                            </td>
-                                            <td>{{ $post->user->name }}</td>
                                             <td class="d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-warning mr-2" title="Show"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
-                                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning mr-2" title="Show"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
                                                     @method("DELETE")
                                                     <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i></button>
@@ -71,7 +65,7 @@
                                         @endforelse
 
                                     </tbody>
-                                </table> --}}
+                                </table>
                             </div>
 
                         </div>
