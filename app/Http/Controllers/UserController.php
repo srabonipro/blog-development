@@ -83,9 +83,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        return view('backend.user.edit');
+        return view('backend.user.edit', compact('user'));
     }
 
     /**
@@ -95,9 +95,40 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'email' => "required|email|unique:users,email,{$user->id}",
+            'password' => 'nullable|min:8',
+            'username' => "required|unique:users,username,{$user->id}|alpha_dash",
+            'image' => 'image|mimes:jpg,jpeg,png',
+            'about' => 'max:65535'
+        ]);
+
+        if ($request->image) {
+            // Remove old image
+            if (file_exists(public_path($request->old_image))) {
+                unlink(public_path($request->old_image));
+            }
+
+            // Save new image
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/user/', $image_new_name);
+            $user->image = '/storage/user/' . $image_new_name;
+            $user->save();
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->username = $request->username;
+        $user->about = $request->about;
+        $user->update();
+
+        toast('User Updated Successfully!', 'success');
+        return back();
     }
 
     /**
