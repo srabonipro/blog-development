@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(0);
             $table->string('image')->nullable();
             $table->text('about')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('username')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
