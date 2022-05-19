@@ -37,7 +37,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'username' => 'required|unique:users,username|alpha_dash',
+            'image' => 'image|mimes:jpg,jpeg,png',
+            'about' => 'max:65535'
+        ]);
+
+        $user = User::create([
+            'name'         => $request->name,
+            'email'         => $request->email,
+            'password'         => bcrypt($request->password),
+            'username'         => $request->username,
+            'about'         => $request->about,
+        ]);
+
+        if ($request->image) {
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/user/', $image_new_name);
+            $user->image = '/storage/user/' . $image_new_name;
+            $user->save();
+        }
+
+        toast('User Added Successfully!', 'success');
+        return back();
     }
 
     /**
