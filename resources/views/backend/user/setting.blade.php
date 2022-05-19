@@ -82,7 +82,7 @@
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-between">
                                             <button type="submit" class="btn btn-primary">Update</button>
-                                            <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
+                                            <a href="{{ route('admin.profile') }}" class="btn btn-primary">Back</a>
                                         </div>
                                     </div>
                                 </form>

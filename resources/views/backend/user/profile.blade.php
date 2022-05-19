@@ -24,7 +24,7 @@
                                 </div>
                                 <h3 class="profile-username text-center">{{ $user->name }}</h3>
                                 <p class="text-info text-center mb-0">{{ $user->email }}</p>
-                                <p class="text-muted text-center mt-0">{{ $user->username }}</p>
+                                <p class="text-danger text-center mt-0">{{ $user->username }}</p>
                                 <p class="text-muted text-center">{{ $user->about }}</p>
                                 <div class="text-center">
                                     <a href="{{ route('admin.profile.setting') }}" class="btn btn-primary"><b>Update Profile</b></a>
