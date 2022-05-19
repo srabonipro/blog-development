@@ -21,37 +21,36 @@
                                 <h3 class="card-title">Create User</h3>
                             </div>
                             <div class="card-body">
-                                {{-- <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="title">Title</label>
-                                            <input type="text" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Enter title">
-                                                @error('title')
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter name">
+                                                @error('name')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="category">Post Category</label>
-                                            <select name="category" id="category" class="form-control">
-                                                <option value="" class="d-none">Select Category</option>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
-                                            </select>
-                                                @error('category')
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter email">
+                                                @error('email')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                         </div>
-
-                                        <label>Select Tags</label>
-                                        <div class="form-group d-flex">
-                                            @foreach ($tags as $tag)
-                                            <div class="form-check mr-3">
-                                                <input class="form-check-input" type="checkbox" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
-                                                <label for="tag{{ $tag->id }}" class="form-check-label">{{ $tag->name }}</label>
-                                            </div>
-                                            @endforeach
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Enter username">
+                                                @error('username')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="text" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter password">
+                                                @error('password')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Image</label>
@@ -60,11 +59,10 @@
                                                 <label class="custom-file-label" for="image">Choose Image</label>
                                             </div>
                                         </div>
-
                                         <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="5" placeholder="Enter category description">{{ old('description') }}</textarea>
-                                            @error('description')
+                                            <label for="about">About</label>
+                                            <textarea id="about" name="about" class="form-control @error('about') is-invalid @enderror" rows="5" placeholder="Enter user details">{{ old('about') }}</textarea>
+                                            @error('about')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -73,10 +71,10 @@
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-between">
                                             <button type="submit" class="btn btn-primary">Add</button>
-                                            <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
+                                            <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
                                         </div>
                                     </div>
-                                </form> --}}
+                                </form>
                             </div>
                         </div>
                     </div>
