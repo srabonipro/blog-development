@@ -31,6 +31,7 @@
                                             <th>Email</th>
                                             <th>Username</th>
                                             <th>Image</th>
+                                            <th>About</th>
                                             <th style="width: 40px">Actions</th>
                                         </tr>
                                     </thead>
@@ -46,6 +47,7 @@
                                                     <img src="{{ asset($user->image) }}" class="img-fluid" alt="">
                                                 </div>
                                             </td>
+                                            <td>{{ Str::limit($user->about, 100, '...') }}</td>
                                             <td class="d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning mr-2" title="Show"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
