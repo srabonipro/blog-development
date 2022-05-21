@@ -19,13 +19,14 @@ class FrontendController extends Controller
         $footerPost2 = $footerPosts->splice(0, 2);
         $footerPost3 = $footerPosts->splice(0, 1);
 
-        $recentPosts = Post::with('category:id,name', 'user:id,name')->paginate(9);
+        $recentPosts = Post::with('category:id,name', 'user:id,name,image')->paginate(9);
 
         return view('frontend.index', compact('posts', 'recentPosts', 'col1Posts', 'col2Posts', 'col3Posts', 'footerPost1', 'footerPost2', 'footerPost3'));
     }
 
     public function post(Post $post)
     {
-        return view('frontend.post', compact('post'));
+        $popularPosts = Post::inRandomOrder()->limit(3)->get();
+        return view('frontend.post', compact('post', 'popularPosts'));
     }
 }
