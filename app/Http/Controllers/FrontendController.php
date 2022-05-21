@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -27,6 +29,8 @@ class FrontendController extends Controller
     public function post(Post $post)
     {
         $popularPosts = Post::inRandomOrder()->limit(3)->get();
-        return view('frontend.post', compact('post', 'popularPosts'));
+        $categories = Category::get();
+        $tags = Tag::all();
+        return view('frontend.post', compact('post', 'popularPosts', 'categories', 'tags'));
     }
 }
