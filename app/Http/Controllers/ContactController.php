@@ -28,6 +28,11 @@ class ContactController extends Controller
         return back();
     }
 
+    public function show(Contact $contact)
+    {
+        return view('backend.contact.show', compact('contact'));
+    }
+
     public function destroy(Contact $contact)
     {
         $contact->delete();

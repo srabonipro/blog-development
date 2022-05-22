@@ -43,6 +43,6 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::resource('/posts', PostController::class);
     Route::resource('/users', UserController::class);
     Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
-    Route::get('/show', [ContactController::class, 'show'])->name('contacts.show');
+    Route::get('/show/{contact}', [ContactController::class, 'show'])->name('contacts.show');
     Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 });
