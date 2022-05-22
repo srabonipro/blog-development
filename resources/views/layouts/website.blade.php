@@ -52,7 +52,7 @@
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="category.html">Home</a></li>
                 @foreach ($categories as $category)
-                <li><a href="category.html">{{ $category->name }}</a></li>
+                <li><a href="{{ route('frontend.category', $category->slug) }}">{{ $category->name }}</a></li>
                 @endforeach
 
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>

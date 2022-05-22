@@ -33,4 +33,10 @@ class FrontendController extends Controller
         $tags = Tag::all();
         return view('frontend.post', compact('post', 'popularPosts', 'categories', 'tags'));
     }
+
+    public function category(Category $category)
+    {
+        $posts = Post::where('category_id', $category->id)->paginate(9);
+        return view('frontend.category', compact('category', 'posts'));
+    }
 }
