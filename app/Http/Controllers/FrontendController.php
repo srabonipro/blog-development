@@ -31,7 +31,14 @@ class FrontendController extends Controller
         $popularPosts = Post::inRandomOrder()->limit(3)->get();
         $categories = Category::get();
         $tags = Tag::all();
-        return view('frontend.post', compact('post', 'popularPosts', 'categories', 'tags'));
+
+        // More related posts
+        $relatedPosts = Post::latest('category_id')->inRandomOrder()->take(5)->get();
+        $firstRelatedPosts = $relatedPosts->splice(0, 1);
+        $secondRelatedPosts = $relatedPosts->splice(0, 2);
+        $thirdRelatedPosts = $relatedPosts->splice(0, 1);
+
+        return view('frontend.post', compact('post', 'popularPosts', 'categories', 'tags', 'firstRelatedPosts', 'secondRelatedPosts', 'thirdRelatedPosts'));
     }
 
     public function category(Category $category)
