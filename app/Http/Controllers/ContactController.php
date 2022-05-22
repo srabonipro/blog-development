@@ -27,4 +27,12 @@ class ContactController extends Controller
         toast('Your Message Sent Successfully!', 'success')->position('bottom-end')->background('green');
         return back();
     }
+
+    public function destroy(Contact $contact)
+    {
+        $contact->delete();
+
+        toast('Contact Deleted Successfully!', 'success');
+        return back();
+    }
 }
