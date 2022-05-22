@@ -42,4 +42,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/users', UserController::class);
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/show', [ContactController::class, 'show'])->name('contacts.show');
+    Route::delete('/contacts', [ContactController::class, 'destroy'])->name('contacts.destroy');
 });
