@@ -1,11 +1,11 @@
 <x-website-layout>
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ asset('frontend') }}/images/img_4.jpg');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ $contact->image }}');">
         <div class="container">
           <div class="row same-height justify-content-center">
             <div class="col-md-12 col-lg-10">
               <div class="post-entry text-center">
                 <h1 class="">Contact Us</h1>
-                <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, adipisci?</p>
+                <p class="lead mb-4 text-white">{{ $contact->description }}</p>
               </div>
             </div>
           </div>
@@ -71,13 +71,13 @@
 
               <div class="p-4 mb-3 bg-white">
                 <p class="mb-0 font-weight-bold">Address</p>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, odio!</p>
+                <p class="mb-4">{{ $contact->address }}</p>
 
                 <p class="mb-0 font-weight-bold">Phone</p>
-                <p class="mb-4"><a href="#">41643132654</a></p>
+                <p class="mb-4"><a href="#">{{ $contact->phone }}</a></p>
 
                 <p class="mb-0 font-weight-bold">Email Address</p>
-                <p class="mb-0"><a href="#">test@mail.com</a></p>
+                <p class="mb-0"><a href="#">{{ $contact->email }}</a></p>
 
               </div>
 

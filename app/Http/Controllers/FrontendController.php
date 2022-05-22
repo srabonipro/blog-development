@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ContactSetting;
 
 class FrontendController extends Controller
 {
@@ -54,6 +55,7 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        return view('frontend.contact');
+        $contact = ContactSetting::get()->first();
+        return view('frontend.contact', compact('contact'));
     }
 }
