@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,8 @@ Route::get('/profile-setting', [UserController::class, 'profileSetting'])->name(
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
+Route::post('/contact-store', [ContactController::class, 'store'])->name('frontend.contact.store');
+
 Route::get('/{post:slug}', [FrontendController::class, 'post'])->name('frontend.post');
 Route::get('categories/{category:slug}', [FrontendController::class, 'category'])->name('frontend.category');
 

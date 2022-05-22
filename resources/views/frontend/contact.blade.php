@@ -16,7 +16,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-7 mb-5">
-              <form action="" method="post" class="p-5 bg-white">
+              <form action="{{ route('frontend.contact.store') }}" method="POST" class="p-5 bg-white">
                 @csrf
                 <div class="row form-group">
                   <div class="col-md-12">
@@ -73,4 +73,5 @@
           </div>
         </div>
       </div>
+      @include('sweetalert::alert')
 </x-website-layout>
