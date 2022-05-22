@@ -21,8 +21,10 @@ Route::get('/profile-setting', [UserController::class, 'profileSetting'])->name(
 
 // Frontend Routes
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
+Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/{post:slug}', [FrontendController::class, 'post'])->name('frontend.post');
 Route::get('categories/{category:slug}', [FrontendController::class, 'category'])->name('frontend.category');
+
 
 // Backend Routes
 Route::get('/admin/dashboard', function () {

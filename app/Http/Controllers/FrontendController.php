@@ -46,4 +46,9 @@ class FrontendController extends Controller
         $posts = Post::where('category_id', $category->id)->paginate(9);
         return view('frontend.category', compact('category', 'posts'));
     }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
 }
