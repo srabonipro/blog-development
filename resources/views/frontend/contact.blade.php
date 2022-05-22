@@ -21,28 +21,40 @@
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="fname">Name</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+                    @error('name')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                    @error('email')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="subject">Subject</label>
-                    <input type="subject" id="subject" name="subject" class="form-control" placeholder="Subject">
+                    <input type="subject" id="subject" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="Subject">
+                    @error('subject')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-black" for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                    <textarea name="message" id="message" cols="30" rows="7" class="form-control @error('message') is-invalid @enderror" placeholder="Write your notes or questions here..."></textarea>
+                    @error('message')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
 
