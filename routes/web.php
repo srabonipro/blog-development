@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactSettingController;
 use App\Http\Controllers\FrontendController;
 
 Route::get('/', function () {
@@ -45,4 +46,8 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('/show/{contact}', [ContactController::class, 'show'])->name('contacts.show');
     Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+    // Setting Routes
+    Route::get('contact-setting', [ContactSettingController::class, 'contactSettingIndex'])->name('contact_settings.index');
+    Route::put('contact-setting/{contactSetting}', [ContactSettingController::class, 'contactSettingUpdate'])->name('contact_settings.update');
 });
