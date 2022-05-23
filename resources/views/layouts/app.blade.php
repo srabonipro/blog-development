@@ -27,10 +27,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a target="_blank" href="{{ route('frontend.home') }}" class="nav-link"><i class="fas fa-globe"></i> Visit Website</a>
                 </li>
             </ul>
 
