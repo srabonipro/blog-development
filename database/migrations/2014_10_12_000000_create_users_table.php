@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('about')->nullable();
             $table->string('username')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
