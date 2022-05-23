@@ -203,112 +203,48 @@
                         data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link">
+                            <a href="{{ route('dashboard') }}" class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('categories.index') }}" class="nav-link {{ Route::is('categories*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-regular fa-folder"></i>
                                 <p>
                                     Category
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('categories.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>All Category</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('categories.create') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add New</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-regular fa-folder"></i>
+                            <a href="{{ route('tags.index') }}" class="nav-link {{ Route::is('tags*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tag"></i>
                                 <p>
                                     Tag
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('tags.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>All Tags</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('tags.create') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add New Tag</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-regular fa-folder"></i>
+                            <a href="{{ route('posts.index') }}" class="nav-link {{ Route::is('posts*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-blog"></i>
                                 <p>
                                     Post
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('posts.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>All Posts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('posts.create') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add New Post</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-regular fa-folder"></i>
+                            <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('users*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     User
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('users.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>All Users</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('users.create') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add New User</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item {{ Route::is('general_settings.index') || Route::is('contact_settings.index') || Route::is('about_settings.index') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ Route::is('general_settings.index') || Route::is('contact_settings.index') || Route::is('about_settings.index') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Settings
@@ -317,19 +253,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('general_settings.index') }}" class="nav-link">
+                                    <a href="{{ route('general_settings.index') }}" class="nav-link {{ Route::is('general_settings.index') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>General Settings</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('contact_settings.index') }}" class="nav-link">
+                                    <a href="{{ route('contact_settings.index') }}" class="nav-link {{ Route::is('contact_settings.index') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Contact Page</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('about_settings.index') }}" class="nav-link">
+                                    <a href="{{ route('about_settings.index') }}" class="nav-link {{ Route::is('about_settings.index') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>About Page</p>
                                     </a>
@@ -338,14 +274,14 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('contacts.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="{{ route('contacts.index') }}" class="nav-link {{ Route::is('contacts*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-comment-alt"></i>
                                 <p>Contacts</p>
                             </a>
                         </li>
 
                         <li class="nav-item text-center">
-                            <a href="#" class="nav-link">
+                            <a class="nav-link">
                                 <p>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
