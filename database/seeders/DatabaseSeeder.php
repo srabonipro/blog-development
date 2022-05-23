@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             ContactSettingSeeder::class,
             GeneralSettingSeeder::class,
+            AboutSettingSeeder::class,
         ]);
     }
 }

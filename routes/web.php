@@ -7,8 +7,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactSettingController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AboutSettingController;
+use App\Http\Controllers\ContactSettingController;
 use App\Http\Controllers\GeneralSettingController;
 
 Route::get('/', function () {
@@ -28,7 +29,7 @@ Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about
 Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
 Route::post('/contact-store', [ContactController::class, 'store'])->name('frontend.contact.store');
 
-Route::get('/{post:slug}', [FrontendController::class, 'post'])->name('frontend.post');
+Route::get('/post/{post:slug}', [FrontendController::class, 'post'])->name('frontend.post');
 Route::get('categories/{category:slug}', [FrontendController::class, 'category'])->name('frontend.category');
 
 
@@ -53,4 +54,6 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::put('contact-setting/{contactSetting}', [ContactSettingController::class, 'contactSettingUpdate'])->name('contact_settings.update');
     Route::get('general-setting', [GeneralSettingController::class, 'index'])->name('general_settings.index');
     Route::put('general-setting/{generalSetting}', [GeneralSettingController::class, 'generalSettingUpdate'])->name('general_settings.update');
+    Route::get('about-setting', [AboutSettingController::class, 'index'])->name('about_settings.index');
+    Route::put('about-setting/{aboutSetting}', [AboutSettingController::class, 'update'])->name('about_settings.update');
 });

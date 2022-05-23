@@ -328,6 +328,12 @@
                                         <p>Contact Page</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('about_settings.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>About Page</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
