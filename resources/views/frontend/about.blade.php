@@ -43,9 +43,9 @@
                 <p>{{ $user->about }}</p>
 
                 <p class="mt-5">
-                  <a href="{{ $user->facebook }}" class="p-3"><span class="icon-facebook"></span></a>
-                  <a href="{{ $user->instagram }}" class="p-3"><span class="icon-instagram"></span></a>
-                  <a href="{{ $user->twitter }}" class="p-3"><span class="icon-twitter"></span></a>
+                  <a href="{{ $user->facebook }}" target="_blank" class="p-3"><span class="icon-facebook"></span></a>
+                  <a href="{{ $user->instagram }}" target="_blank" class="p-3"><span class="icon-instagram"></span></a>
+                  <a href="{{ $user->twitter }}" target="_blank" class="p-3"><span class="icon-twitter"></span></a>
                 </p>
               </div>
               @endforeach
