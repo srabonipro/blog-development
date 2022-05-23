@@ -75,7 +75,7 @@
         <div class="row mb-5">
           <div class="col-md-4">
             <h3 class="footer-heading mb-4">About Us</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
+            <p>{{ $generalSetting->about }}</p>
           </div>
           <div class="col-md-3 ml-auto">
             <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
@@ -86,10 +86,9 @@
               <li><a href="#">Subscribes</a></li>
             </ul>
             <ul class="list-unstyled float-left">
-              <li><a href="#">Travel</a></li>
-              <li><a href="#">Lifestyle</a></li>
-              <li><a href="#">Sports</a></li>
-              <li><a href="#">Nature</a></li>
+                @foreach ($categories as $category)
+                <li><a href="{{ route('frontend.category', $category->slug) }}">{{ $category->name }}</a></li>
+                @endforeach
             </ul>
           </div>
           <div class="col-md-4">
@@ -98,11 +97,11 @@
             <div>
               <h3 class="footer-heading mb-4">Connect With Us</h3>
               <p>
-                <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                <a href="#"><span class="icon-twitter p-2"></span></a>
-                <a href="#"><span class="icon-instagram p-2"></span></a>
-                <a href="#"><span class="icon-rss p-2"></span></a>
-                <a href="#"><span class="icon-envelope p-2"></span></a>
+                <a href="{{ $generalSetting->facebook }}" target="__blank"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
+                <a href="{{ $generalSetting->twitter }}" target="__blank"><span class="icon-twitter p-2"></span></a>
+                <a href="{{ $generalSetting->instagram }}" target="__blank"><span class="icon-instagram p-2"></span></a>
+                <a href="{{ $generalSetting->linkedin }}" target="__blank"><span class="icon-linkedin p-2"></span></a>
+                <a href="{{ $generalSetting->youtube }}" target="__blank"><span class="icon-youtube p-2"></span></a>
               </p>
             </div>
           </div>
