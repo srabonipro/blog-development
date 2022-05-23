@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactSettingController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\GeneralSettingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,4 +51,6 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     // Setting Routes
     Route::get('contact-setting', [ContactSettingController::class, 'contactSettingIndex'])->name('contact_settings.index');
     Route::put('contact-setting/{contactSetting}', [ContactSettingController::class, 'contactSettingUpdate'])->name('contact_settings.update');
+    Route::get('general-setting', [GeneralSettingController::class, 'index'])->name('general_settings.index');
+    Route::put('general-setting/{generalSetting}', [GeneralSettingController::class, 'generalSettingUpdate'])->name('general_settings.update');
 });

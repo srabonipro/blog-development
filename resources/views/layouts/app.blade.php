@@ -317,6 +317,12 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="{{ route('general_settings.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>General Settings</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('contact_settings.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Contact Page</p>
