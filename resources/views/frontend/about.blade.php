@@ -1,11 +1,11 @@
 <x-website-layout>
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ asset('frontend') }}/images/img_4.jpg');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ $about->banner }}');">
         <div class="container">
           <div class="row same-height justify-content-center">
             <div class="col-md-12 col-lg-10">
               <div class="post-entry text-center">
                 <h1 class="">About Us</h1>
-                <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, adipisci?</p>
+                <p class="lead mb-4 text-white">{{ $about->description }}</p>
               </div>
             </div>
           </div>
@@ -17,16 +17,11 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6 order-md-2">
-              <img src="{{ asset('frontend') }}/images/img_1.jpg" alt="Image" class="img-fluid">
+              <img src="{{ $about->image1 }}" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-5 mr-auto order-md-1">
-              <h2>We Love To Explore</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-              <ul class="ul-check list-unstyled success">
-                <li>Onsectetur adipisicing elit</li>
-                <li>Dolorem saepe non eligendi possimus</li>
-                <li>Voluptate odit corrupti vitae</li>
-              </ul>
+              <h2>{{ $about->title1 }}</h2>
+              <p>{{ $about->description1 }}</p>
             </div>
           </div>
         </div>
@@ -36,46 +31,25 @@
         <div class="container">
           <div class="row mb-5 justify-content-center">
             <div class="col-md-5 text-center">
-              <h2>Meet The Team</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus commodi blanditiis, soluta magnam atque laborum ex qui recusandae</p>
+              <h2>{{ $about->team_title }}</h2>
+              <p>{{ $about->team_description }}</p>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 col-lg-4 mb-5 text-center">
-              <img src="{{ asset('frontend') }}/images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
-              <h2 class="mb-3 h5">Kate Hampton</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum neque nobis eos quam necessitatibus rerum aliquid est tempore, cupiditate iure at voluptatum dolore, voluptates. Debitis accusamus, beatae ipsam excepturi mollitia.</p>
+              @foreach ($users as $user)
+              <div class="col-md-6 col-lg-4 mb-5 text-center">
+                <img src="{{ $user->image }}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+                <h2 class="mb-3 h5">{{ $user->name }}</h2>
+                <p>{{ $user->about }}</p>
 
-              <p class="mt-5">
-                <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-                <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-                <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              </p>
-            </div>
+                <p class="mt-5">
+                  <a href="{{ $user->facebook }}" class="p-3"><span class="icon-facebook"></span></a>
+                  <a href="{{ $user->instagram }}" class="p-3"><span class="icon-instagram"></span></a>
+                  <a href="{{ $user->twitter }}" class="p-3"><span class="icon-twitter"></span></a>
+                </p>
+              </div>
+              @endforeach
 
-            <div class="col-md-6 col-lg-4 mb-5 text-center">
-              <img src="{{ asset('frontend') }}/images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
-              <h2 class="mb-3 h5">Richard Cook</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum neque nobis eos quam necessitatibus rerum aliquid est tempore, cupiditate iure at voluptatum dolore, voluptates. Debitis accusamus, beatae ipsam excepturi mollitia.</p>
-
-              <p class="mt-5">
-                <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-                <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-                <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              </p>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mb-5 text-center">
-              <img src="{{ asset('frontend') }}/images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
-              <h2 class="mb-3 h5">Kevin Peters</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum neque nobis eos quam necessitatibus rerum aliquid est tempore, cupiditate iure at voluptatum dolore, voluptates. Debitis accusamus, beatae ipsam excepturi mollitia.</p>
-
-              <p class="mt-5">
-                <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-                <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-                <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -84,17 +58,11 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <img src="{{ asset('frontend') }}/images/img_1.jpg" alt="Image" class="img-fluid">
+              <img src="{{ $about->image2 }}" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-5 ml-auto">
-              <h2>Learn From Us</h2>
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-
-              <ul class="ul-check list-unstyled success">
-                <li>Onsectetur adipisicing elit</li>
-                <li>Dolorem saepe non eligendi possimus</li>
-                <li>Voluptate odit corrupti vitae</li>
-              </ul>
+              <h2>{{ $about->title2 }}</h2>
+              <p class="mb-4">{{ $about->description2 }}</p>
             </div>
           </div>
         </div>

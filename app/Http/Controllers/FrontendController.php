@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutSetting;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\ContactSetting;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
@@ -50,7 +52,9 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('frontend.about');
+        $about = AboutSetting::get()->first();
+        $users = User::all();
+        return view('frontend.about', compact('about', 'users'));
     }
 
     public function contact()
