@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::withCount('posts')->get();
         return view('backend.category.index', $data);
     }
 
@@ -48,7 +48,7 @@ class CategoryController extends Controller
             "description" => $request->description
         ]);
 
-        toast('Category Added Successfully!','success');
+        toast('Category Added Successfully!', 'success');
         return back();
     }
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->save();
 
-        toast('Category Updated Successfully!','success');
+        toast('Category Updated Successfully!', 'success');
         return to_route('categories.index');
     }
 
@@ -107,7 +107,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        toast('Category Deleted Successfully!','success');
+        toast('Category Deleted Successfully!', 'success');
         return back();
     }
 }

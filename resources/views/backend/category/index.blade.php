@@ -43,7 +43,7 @@
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->slug }}</td>
                                             <td>{{ $category->description }}</td>
-                                            <td>10</td>
+                                            <td>{{ $category->posts_count }}</td>
                                             <td class="d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
