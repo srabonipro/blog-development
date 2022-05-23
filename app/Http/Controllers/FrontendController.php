@@ -32,7 +32,7 @@ class FrontendController extends Controller
     public function post(Post $post)
     {
         $popularPosts = Post::inRandomOrder()->limit(3)->get();
-        $categories = Category::get();
+        $categories = Category::withCount('posts')->get();
         $tags = Tag::all();
 
         // More related posts
